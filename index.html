@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1E2B38">
+<title>ЖК «Крылья» — современный жилой комплекс на Планерной в Твери</title>
+<meta name="description" content="ЖК «Крылья» в Твери на ул. Планерная: умные планировки, панорамное остекление, эркеры, автономное отопление, монолит-кирпич, паркинг. Квартиры от 4,3 млн ₽. Семейная ипотека от 3,5%, Trade-In, рассрочка.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=60" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDEBE7;
+  --bg-soft:#F5F3EF;
+  --navy:#283747;
+  --navy-deep:#1E2B38;
+  --ink:#1A1A1A;
+  --tan:#E3C9A4;
+  --tan-soft:#EAD7BC;
+  --taupe:#A78F77;
+  --white:#FFFFFF;
+  --muted:#6F6A63;
+  --muted-navy:#AEBBC7;
+  --line:rgba(26,26,26,.14);
+  --line-light:rgba(255,255,255,.18);
+  --radius:10px;
+  --radius-lg:16px;
+  --maxw:1280px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 24px 60px -28px rgba(20,30,40,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden;background:var(--bg)}
+body{
+  font-family:'Manrope',-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+section{position:relative}
+h1,h2,h3{line-height:1.05;letter-spacing:-.02em;font-weight:800}
+.eyebrow{
+  font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--taupe);margin-bottom:18px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--taupe);display:inline-block}
+.eyebrow.on-dark{color:var(--tan)}
+.eyebrow.on-dark::before{background:var(--tan)}
+.h-sec{font-size:clamp(34px,5vw,58px);margin-bottom:22px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:17px 32px;border-radius:8px;font-weight:700;font-size:15px;
+  letter-spacing:.01em;transition:transform .35s var(--ease),background .35s var(--ease),color .35s;
+  white-space:nowrap;
+}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+.btn-tan{background:var(--tan);color:var(--ink)}
+.btn-tan:hover{background:var(--tan-soft);transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-outline-light{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-outline-light:hover{background:#fff;color:var(--ink)}
+.btn-wide{width:100%}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* pill badges */
+.pill{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:40px;
+  font-size:14px;font-weight:600;border:1.5px solid var(--line);
+}
+.pill.on-photo{border-color:rgba(255,255,255,.85);color:#fff;backdrop-filter:blur(2px)}
+.pill.on-navy{border-color:rgba(255,255,255,.32);color:#fff}
+
+/* ---------- header ---------- */
+header{
+  position:fixed;top:env(safe-area-inset-top);left:0;right:0;z-index:60;
+  transition:background .4s var(--ease),box-shadow .4s,padding .4s;
+  padding:22px 0;
+}
+header.scrolled{background:rgba(237,235,231,.92);backdrop-filter:blur(14px);padding:13px 0;box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:23px;letter-spacing:-.03em}
+.logo svg{width:34px;height:34px}
+.logo .sub{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);display:block;line-height:1;margin-top:3px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:15px;font-weight:600;position:relative;padding:4px 0;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--ink);transition:width .3s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav-phone{font-weight:800;font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+.burger{display:none;width:46px;height:46px;border:1.5px solid var(--line);border-radius:8px;flex-direction:column;gap:5px;align-items:center;justify-content:center}
+.burger span{width:20px;height:2px;background:var(--ink);transition:.3s}
+
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:70;background:var(--navy);transform:translateX(100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:calc(90px + env(safe-area-inset-top)) 32px calc(40px + env(safe-area-inset-bottom))}
+.drawer.open{transform:translateX(0)}
+.drawer a{color:#fff;font-size:26px;font-weight:700;padding:14px 0;border-bottom:1px solid var(--line-light)}
+.drawer .d-phone{color:var(--tan);font-size:24px;margin-top:auto}
+.drawer-close{position:absolute;top:26px;right:26px;color:#fff;font-size:34px;line-height:1}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;min-height:100svh;min-height:100dvh;display:flex;align-items:flex-end;padding-bottom:54px;position:relative;color:#fff;overflow:hidden;background:var(--navy-deep);isolation:isolate}
+.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:linear-gradient(120deg,#33444f,#1c2832)}
+.hero-bg{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,28,36,.45) 0%,rgba(20,28,36,.15) 35%,rgba(20,28,36,.78) 100%)}
+.hero .wrap{width:100%;position:relative;z-index:2}
+.hero-top{position:absolute;top:118px;left:0;right:0;z-index:3}
+.hero-flag{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(227,201,164,.18);border:1px solid rgba(227,201,164,.5);color:var(--tan);padding:9px 18px;border-radius:40px;backdrop-filter:blur(4px)}
+.hero-flag .dot{width:8px;height:8px;border-radius:50%;background:var(--tan);position:relative}
+.hero-flag .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:rgba(227,201,164,.55);animation:pulse 2.2s infinite;will-change:transform,opacity}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(3.2);opacity:0}}
+.hero h1{font-size:clamp(74px,16vw,210px);font-weight:800;letter-spacing:-.045em;line-height:.9;margin:18px 0 6px}
+.hero-sub{font-size:clamp(18px,2.4vw,26px);font-weight:400;color:rgba(255,255,255,.9);margin-bottom:34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.hero-badges{display:flex;gap:12px;flex-wrap:wrap}
+.scroll-cue{position:absolute;right:32px;bottom:54px;z-index:3;writing-mode:vertical-rl;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:14px}
+.scroll-cue .ln{width:1px;height:46px;background:rgba(255,255,255,.4);position:relative;overflow:hidden}
+.scroll-cue .ln::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--tan);animation:scrolldown 2s infinite}
+@keyframes scrolldown{0%{top:-100%}60%,100%{top:100%}}
+
+/* ---------- stat strip ---------- */
+.strip{background:var(--ink);color:#fff;padding:30px 0}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.strip-item{display:flex;flex-direction:column;gap:3px}
+.strip-item b{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-.03em;color:var(--tan)}
+.strip-item span{font-size:14px;color:rgba(255,255,255,.62);font-weight:400}
+
+/* ---------- generic section padding ---------- */
+.pad{padding:110px 0}
+.pad-sm{padding:80px 0}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.about-lead{font-size:20px;line-height:1.55;color:#39342d;margin-bottom:34px;max-width:560px}
+.feat-list{display:grid;gap:2px}
+.feat{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 0;border-top:1px solid var(--line);align-items:start}
+.feat:last-child{border-bottom:1px solid var(--line)}
+.feat .ic{width:46px;height:46px;border-radius:10px;background:var(--navy);color:var(--tan);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat .ic svg{width:24px;height:24px}
+.feat h3{font-size:20px;margin-bottom:5px;letter-spacing:-.01em}
+.feat p{font-size:15px;color:var(--muted);line-height:1.5}
+.about-media{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,#cfc6ba,#a89c8c);box-shadow:var(--shadow)}
+.about-media img{width:100%;height:100%;object-fit:cover}
+.about-tag{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);padding:16px 22px;border-radius:12px;max-width:75%}
+.about-tag b{display:block;font-size:17px;letter-spacing:-.01em}
+.about-tag span{font-size:13px;color:var(--muted)}
+
+/* apartments */
+.apts{background:var(--navy);color:#fff}
+.apts .h-sec,.apts .eyebrow{color:#fff}
+.tabs{display:inline-flex;gap:6px;background:rgba(255,255,255,.07);padding:6px;border-radius:46px;margin:8px 0 44px;border:1px solid var(--line-light)}
+.tab{padding:12px 26px;border-radius:40px;font-weight:700;font-size:15px;color:var(--muted-navy);transition:.3s var(--ease)}
+.tab.active{background:var(--tan);color:var(--ink)}
+.apt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.apt-card{background:rgba(255,255,255,.05);border:1px solid var(--line-light);border-radius:14px;padding:0;overflow:hidden;transition:.4s var(--ease);cursor:pointer}
+.apt-card:hover{background:rgba(255,255,255,.1);transform:translateY(-6px)}
+.apt-plan{aspect-ratio:1;background:#f4f2ee;position:relative;display:flex;align-items:center;justify-content:center}
+.apt-plan svg{width:78%;height:78%;opacity:.85}
+.apt-tagstatus{position:absolute;top:12px;left:12px;background:var(--tan);color:var(--ink);font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px}
+.apt-body{padding:20px}
+.apt-body h3{font-size:19px;margin-bottom:12px}
+.apt-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.apt-price{font-size:13px;color:var(--muted-navy)}
+.apt-price b{display:block;font-size:24px;color:#fff;font-weight:800;letter-spacing:-.02em;margin-top:2px}
+.apts-footer{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:36px;flex-wrap:wrap}
+.apts-note{color:var(--muted-navy);font-size:14px;max-width:440px}
+
+/* purchase / mortgage */
+.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+.pay-card{border-radius:var(--radius-lg);padding:34px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between;transition:.4s var(--ease)}
+.pay-card:hover{transform:translateY(-6px)}
+.pay-card h3{font-size:24px;margin-bottom:8px}
+.pay-card p{font-size:15px;line-height:1.45;opacity:.92}
+.pay-card .big{font-size:clamp(40px,5vw,62px);font-weight:800;letter-spacing:-.03em;text-align:right}
+.pay-card .big small{font-size:22px;font-weight:600;opacity:.7;margin-right:6px}
+.pc-taupe{background:var(--taupe);color:#fff}
+.pc-tan{background:var(--tan);color:var(--ink)}
+.pc-ink{background:var(--ink);color:#fff}
+.pc-ink .big{color:var(--tan)}
+/* calculator */
+.calc{background:#fff;border-radius:var(--radius-lg);padding:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;box-shadow:0 20px 50px -32px rgba(20,30,40,.4)}
+.calc h3{font-size:26px;margin-bottom:6px}
+.calc-sub{color:var(--muted);font-size:15px;margin-bottom:26px}
+.field{margin-bottom:22px}
+.field label{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:10px}
+.field label b{color:var(--navy);font-weight:800}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:5px;background:var(--line);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--navy);cursor:pointer;border:4px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--navy);cursor:pointer;border:4px solid #fff}
+.prog-pick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.prog-pick button{padding:9px 15px;border:1.5px solid var(--line);border-radius:30px;font-size:13px;font-weight:600;transition:.25s}
+.prog-pick button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.calc-result{background:var(--navy);color:#fff;border-radius:var(--radius);padding:34px;text-align:center}
+.calc-result .lab{font-size:14px;color:var(--muted-navy);margin-bottom:8px}
+.calc-result .pay{font-size:clamp(38px,5vw,54px);font-weight:800;letter-spacing:-.03em;color:var(--tan);line-height:1}
+.calc-result .pay span{font-size:22px;font-weight:600}
+.calc-result .meta{font-size:13px;color:var(--muted-navy);margin:16px 0 24px;line-height:1.5}
+.banks{margin-top:46px;text-align:center}
+.banks p{font-size:14px;color:var(--muted);margin-bottom:20px;letter-spacing:.04em}
+.banks-row{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.7;font-weight:800;font-size:19px;color:var(--navy)}
+.banks-row span{letter-spacing:-.01em}
+
+/* infrastructure */
+.infra{background:var(--bg-soft)}
+.infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.infra-map{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:1.15;background:linear-gradient(135deg,#d4cdc2,#b3a795);position:relative;box-shadow:var(--shadow)}
+.infra-map img{width:100%;height:100%;object-fit:cover}
+.infra-pin{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);z-index:2}
+.infra-pin .pmark{width:54px;height:54px;background:var(--tan);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.infra-pin .pmark svg{transform:rotate(45deg);width:26px;height:26px;color:var(--ink)}
+.infra-pin .plabel{position:absolute;top:62px;left:50%;transform:translateX(-50%);background:#fff;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.poi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.poi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
+.poi .t{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px;display:flex;align-items:baseline;gap:8px}
+.poi .t b{font-size:22px;color:var(--ink)}
+.poi p{font-size:13px;color:var(--muted)}
+
+/* progress timeline */
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:14px}
+.tl-card{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.tl-img{aspect-ratio:4/3;background:linear-gradient(135deg,#c7beb0,#9c8f7c);position:relative}
+.tl-img img{width:100%;height:100%;object-fit:cover}
+.tl-stage{position:absolute;top:12px;left:12px;background:rgba(26,26,26,.82);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:20px}
+.tl-card .tl-body{padding:18px}
+.tl-card .tl-body b{font-size:16px;display:block;margin-bottom:3px}
+.tl-card .tl-body span{font-size:13px;color:var(--muted)}
+.prog-banner{margin-top:34px;background:var(--navy);color:#fff;border-radius:var(--radius-lg);padding:30px 38px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.prog-banner b{font-size:20px;letter-spacing:-.01em}
+.prog-banner p{color:var(--muted-navy);font-size:15px}
+
+/* gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.g-item{border-radius:12px;overflow:hidden;cursor:pointer;position:relative;background:linear-gradient(135deg,#cfc6ba,#a89c8c)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.g-item:hover img{transform:scale(1.06)}
+.g-item.tall{grid-row:span 2}
+.g-item.wide{grid-column:span 2}
+.g-item::after{content:"+";position:absolute;inset:0;background:rgba(26,26,26,.35);color:#fff;font-size:36px;font-weight:400;display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s}
+.g-item:hover::after{opacity:1}
+
+/* developer */
+.dev{background:var(--ink);color:#fff}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.dev .eyebrow{color:var(--tan)}
+.dev h2{color:#fff}
+.dev p{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;margin-bottom:16px}
+.dev-stats{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.dev-stat{border:1px solid var(--line-light);border-radius:14px;padding:30px}
+.dev-stat b{font-size:clamp(38px,5vw,56px);font-weight:800;color:var(--tan);letter-spacing:-.03em;display:block;line-height:1}
+.dev-stat span{font-size:14px;color:rgba(255,255,255,.6);margin-top:8px;display:block}
+
+/* lead form */
+.lead{background:var(--tan);color:var(--ink)}
+.lead-grid{display:grid;grid-template-columns:1fr .85fr;gap:56px;align-items:center}
+.lead h2{font-size:clamp(32px,4.5vw,52px);margin-bottom:18px}
+.lead .sub{font-size:18px;max-width:420px;color:#3a3228}
+.lead-perks{display:flex;gap:24px;margin-top:30px;flex-wrap:wrap}
+.lead-perks div{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15px}
+.lead-perks svg{width:20px;height:20px;color:var(--navy)}
+.form-card{background:#fff;border-radius:var(--radius-lg);padding:38px;box-shadow:0 30px 70px -30px rgba(40,30,15,.45)}
+.form-card h3{font-size:22px;margin-bottom:6px}
+.form-card .fc-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.inp{width:100%;padding:16px 18px;border:1.5px solid var(--line);border-radius:10px;font-size:16px;font-family:inherit;margin-bottom:14px;transition:border .25s;background:#fafafa}
+.inp:focus{outline:none;border-color:var(--navy);background:#fff}
+.consent{font-size:12px;color:var(--muted);line-height:1.5;margin-top:14px}
+.consent a{text-decoration:underline}
+.form-success{display:none;text-align:center;padding:30px 10px}
+.form-success.show{display:block}
+.form-success .chk{width:64px;height:64px;border-radius:50%;background:var(--navy);color:var(--tan);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.form-success h3{font-size:24px;margin-bottom:8px}
+.form-success p{color:var(--muted)}
+
+/* contacts */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px}
+.contact-card .ct-type{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);margin-bottom:14px}
+.contact-card h3{font-size:22px;margin-bottom:14px;letter-spacing:-.01em}
+.contact-card .addr{font-size:16px;line-height:1.55;color:#39342d;margin-bottom:14px}
+.contact-card .hours{font-size:14px;color:var(--muted);line-height:1.6}
+.contact-phone-row{display:flex;align-items:center;gap:24px;margin:42px 0 0;flex-wrap:wrap;justify-content:space-between}
+.contact-big-phone{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em}
+.socials{display:flex;gap:12px}
+.socials a{width:50px;height:50px;border:1.5px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:.3s}
+.socials a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.socials svg{width:22px;height:22px}
+
+/* footer */
+footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:46px;border-bottom:1px solid var(--line-light)}
+.foot-logo{font-size:26px;font-weight:800;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.foot-logo svg{width:38px;height:38px}
+.foot-about{color:var(--muted-navy);font-size:14px;line-height:1.6;max-width:320px}
+.foot-col h4{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--tan);margin-bottom:18px;font-weight:700}
+.foot-col a,.foot-col p{display:block;color:var(--muted-navy);font-size:15px;margin-bottom:11px;transition:color .25s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;padding-top:26px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.foot-bottom a{text-decoration:underline}
+.disclaimer{max-width:760px}
+
+/* sticky mobile cta */
+.mobile-cta{position:fixed;bottom:0;left:0;right:0;z-index:55;display:none;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--navy-deep);border-top:1px solid rgba(255,255,255,.1)}
+/* iOS safe-area: theme-color не красит бары на iOS 26 — закрашиваем зону чёлки фирменным цветом вручную */
+.ios-safe-top{position:fixed;top:0;left:0;right:0;height:env(safe-area-inset-top);background:var(--navy-deep);z-index:200;pointer-events:none}
+.mobile-cta .btn{flex:1;padding:15px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,28,36,.6);backdrop-filter:blur(6px)}
+.modal.open{display:flex}
+.modal-box{background:#fff;border-radius:var(--radius-lg);padding:40px;max-width:440px;width:100%;position:relative;animation:popin .4s var(--ease)}
+@keyframes popin{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.modal-box h3{font-size:24px;margin-bottom:6px}
+.modal-box .m-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+.modal-close{position:absolute;top:18px;right:18px;font-size:28px;color:var(--muted);line-height:1}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .nav-links,.nav-phone{display:none}
+  .burger{display:flex}
+  .about-grid,.infra-grid,.dev-grid,.lead-grid,.calc{grid-template-columns:1fr;gap:40px}
+  .apt-grid,.timeline,.gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .pay-grid{grid-template-columns:1fr 1fr}
+  .strip-grid{grid-template-columns:repeat(2,1fr);gap:26px 20px}
+  .contacts-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+  .gallery-grid{grid-auto-rows:170px}
+}
+@media(max-width:760px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .pay-grid{grid-template-columns:1fr}
+  .pad{padding:72px 0}.pad-sm{padding:54px 0}
+  .foot-top{grid-template-columns:1fr 1fr;gap:32px}
+  .apt-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .timeline{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .g-item.wide{grid-column:span 2}
+  .mobile-cta{display:flex}
+  body{padding-bottom:74px}
+  /* hero: фото на всю высоту, контент прижат к низу над градиентом */
+  .hero{min-height:100svh;flex-direction:column;justify-content:flex-end;align-items:stretch;padding-top:clamp(96px,24vw,140px);padding-bottom:clamp(84px,15vw,108px)}
+  .hero-top{position:static;margin:0 0 14px}
+  .hero h1{font-size:clamp(56px,16vw,92px);margin:6px 0 6px}
+  .hero-sub{font-size:clamp(16px,4.2vw,20px);margin-bottom:clamp(20px,6vw,30px)}
+  .hero-cta{flex-direction:column;margin-bottom:clamp(20px,6vw,30px)}
+  .hero-cta .btn{width:100%}
+  .hero-badges{gap:10px}
+  /* в шапке на телефоне оставляем логотип + бургер (CTA есть в меню и внизу) */
+  header .nav-right .btn-dark{display:none}
+  .scroll-cue{display:none}
+  .lead-perks{gap:14px}
+  .contact-phone-row{flex-direction:column;align-items:flex-start}
+  /* табы секций: вертикально, на всю ширину, по центру */
+  .tabs{display:flex;flex-direction:column;width:100%;border-radius:16px;gap:6px;margin-bottom:32px}
+  .tab{width:100%;text-align:center;padding:13px 16px;font-size:14px;border-radius:11px}
+  /* калькулятор: симметричные отступы, без прижима к краю */
+  .calc{padding:26px 20px;gap:28px}
+  .calc-result{padding:28px 22px}
+  .field label{flex-wrap:wrap;gap:4px 12px}
+  .prog-banner,.apts-footer{flex-direction:column;align-items:flex-start}
+  .prog-banner .btn,.apts-footer .btn{width:100%}
+}
+@media(max-width:430px){
+  .foot-top{grid-template-columns:1fr}
+  .strip-grid{grid-template-columns:1fr 1fr}
+  .apt-grid,.timeline,.gallery-grid{grid-template-columns:1fr}
+  .g-item.wide{grid-column:auto}
+  .g-item.tall{grid-row:auto}
+  .calc{padding:24px 18px}
+  .calc-result{padding:26px 18px}
+  .form-card,.contact-card,.pay-card{padding:26px}
+}
+</style>
+</head>
+<body>
+<div class="ios-safe-top" aria-hidden="true"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="ЖК Крылья">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M4 26 C12 10 20 18 36 8 C28 24 18 22 4 32 Z" fill="#283747"/><path d="M6 30 C14 18 22 24 34 14" stroke="#E3C9A4" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+      <span>Крылья<span class="sub">на Планерной</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">О проекте</a>
+      <a href="#apartments">Квартиры</a>
+      <a href="#purchase">Ипотека</a>
+      <a href="#infra">Локация</a>
+      <a href="#progress">Ход стройки</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="nav-right">
+      <a href="tel:+74822691112" class="nav-phone">+7 4822 69-11-12</a>
+      <button class="btn btn-dark" data-modal>Заказать звонок</button>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Закрыть меню">&times;</button>
+  <a href="#about">О проекте</a>
+  <a href="#apartments">Квартиры</a>
+  <a href="#purchase">Ипотека</a>
+  <a href="#infra">Локация</a>
+  <a href="#progress">Ход строительства</a>
+  <a href="#contacts">Контакты</a>
+  <a href="tel:+74822691112" class="d-phone">+7 4822 69-11-12</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <img class="hero-bg-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=60" alt="" fetchpriority="high" decoding="async">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-top">
+    <div class="wrap">
+      <span class="hero-flag"><span class="dot"></span>Старт продаж 2 очереди</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="rv in">
+      <h1>Крылья</h1>
+      <p class="hero-sub">Жилой комплекс премиум-класса на ул. Планерной в Твери</p>
+    </div>
+    <div class="hero-cta rv in rv-d1">
+      <a href="#apartments" class="btn btn-tan">Выбрать квартиру <span class="arr">→</span></a>
+      <button class="btn btn-outline-light" data-modal>Узнать цены и условия</button>
+    </div>
+    <div class="hero-badges rv in rv-d2">
+      <span class="pill on-photo">от 4,3 млн ₽</span>
+      <span class="pill on-photo">📍 10 минут до центра</span>
+      <span class="pill on-photo">Сдача — III квартал 2027</span>
+      <span class="pill on-photo">Монолит-кирпич</span>
+    </div>
+  </div>
+  <div class="scroll-cue">Листайте вниз<span class="ln"></span></div>
+</section>
+
+<!-- ============ STAT STRIP ============ -->
+<section class="strip">
+  <div class="wrap strip-grid">
+    <div class="strip-item rv"><b>2</b><span>секции, подъезды 7–10</span></div>
+    <div class="strip-item rv rv-d1"><b>11 лет</b><span>застройщик на рынке Твери</span></div>
+    <div class="strip-item rv rv-d2"><b>от 3,5%</b><span>семейная ипотека</span></div>
+    <div class="strip-item rv rv-d3"><b>1 очередь</b><span>сдана и заселена</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="pad" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow rv">О проекте</div>
+      <h2 class="h-sec rv rv-d1">Дом, в котором<br>хочется жить</h2>
+      <p class="about-lead rv rv-d2">«Крылья» на Планерной — это новый стандарт городского жилья: продуманные планировки, панорамный свет и архитектура, которая поднимает настроение даже в пасмурный день.</p>
+      <div class="feat-list">
+        <div class="feat rv">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2m-2 4h2m4-4h2m-2 4h2"/></svg></div>
+          <div><h3>Умные планировки</h3><p>Кухни-гостиные, выделенные гардеробные, эркеры и зоны хранения. Два входа и два лифта на каждый подъезд.</p></div>
+        </div>
+        <div class="feat rv rv-d1">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 0a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-7 7H3m18 0h-2M6.3 6.3 5 5m13 1.3L19.3 5"/></svg></div>
+          <div><h3>Автономное отопление</h3><p>Индивидуальная система поддерживает идеальный микроклимат и адаптируется к погоде — тепло именно тогда, когда нужно.</p></div>
+        </div>
+        <div class="feat rv rv-d2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 3v18"/></svg></div>
+          <div><h3>Панорамное остекление</h3><p>Высокие окна наполняют квартиры светом и воздухом, а эркеры добавляют пространству объёма и характера.</p></div>
+        </div>
+        <div class="feat rv rv-d3">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11V7a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8Z"/></svg></div>
+          <div><h3>Двор и паркинг</h3><p>Монолитно-кирпичная конструкция, придомовый паркинг, ландшафтный дизайн и безопасная закрытая территория.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-media rv rv-d1">
+      <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1000&q=80" alt="Интерьер квартиры ЖК Крылья" loading="lazy">
+      <div class="about-tag"><b>Светлые квартиры с эркером</b><span>панорамное остекление в каждой секции</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APARTMENTS ============ -->
+<section class="pad apts" id="apartments">
+  <div class="wrap">
+    <div class="eyebrow on-dark rv">Выбрать квартиру</div>
+    <h2 class="h-sec rv rv-d1">Планировки под<br>ваш сценарий жизни</h2>
+    <div class="tabs rv rv-d2" id="sectionTabs">
+      <button class="tab active" data-sec="all">Все квартиры</button>
+      <button class="tab" data-sec="s1">1 секция · подъезды 7–8</button>
+      <button class="tab" data-sec="s2">2 секция · подъезды 9–10</button>
+    </div>
+    <div class="apt-grid" id="aptGrid"></div>
+    <div class="apts-footer rv">
+      <p class="apts-note">Цены и площади указаны для примера по данным концепции — актуальную шахматку и наличие уточняйте в отделе продаж.</p>
+      <a href="https://krylia-tver.ru/all" target="_blank" rel="noopener" class="btn btn-tan">Посмотреть все квартиры <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PURCHASE / MORTGAGE ============ -->
+<section class="pad" id="purchase">
+  <div class="wrap">
+    <div class="eyebrow rv">Способы покупки</div>
+    <h2 class="h-sec rv rv-d1">Выгодные условия<br>для каждой семьи</h2>
+    <div class="pay-grid">
+      <div class="pay-card pc-tan rv">
+        <div><h3>Семейная ипотека</h3><p>Для семей с ребёнком до 7 лет. Минимальная ставка на рынке.</p></div>
+        <div class="big"><small>от</small>3,5%</div>
+      </div>
+      <div class="pay-card pc-taupe rv rv-d1">
+        <div><h3>IT-ипотека</h3><p>Специальные условия для аккредитованных IT-специалистов.</p></div>
+        <div class="big"><small>от</small>6%</div>
+      </div>
+      <div class="pay-card pc-ink rv rv-d2">
+        <div><h3>Ипотека для всех</h3><p>Базовая программа банков-партнёров для любого покупателя.</p></div>
+        <div class="big"><small>от</small>13,9%</div>
+      </div>
+      <div class="pay-card pc-taupe rv">
+        <div><h3>Trade-In</h3><p>Меняем вашу старую квартиру на новую с зачётом стоимости.</p></div>
+        <div class="big"><small>до</small>90%</div>
+      </div>
+      <div class="pay-card pc-ink rv rv-d1">
+        <div><h3>Рассрочка</h3><p>Беспроцентная рассрочка от застройщика на период строительства.</p></div>
+        <div class="big">0%</div>
+      </div>
+      <div class="pay-card pc-tan rv rv-d2">
+        <div><h3>Маткапитал</h3><p>Используйте материнский капитал как первоначальный взнос.</p></div>
+        <div class="big" style="font-size:38px">в&nbsp;зачёт</div>
+      </div>
+    </div>
+
+    <!-- calculator -->
+    <div class="calc rv">
+      <div>
+        <h3>Калькулятор ипотеки</h3>
+        <p class="calc-sub">Прикиньте платёж за минуту. Точный расчёт подберёт менеджер.</p>
+        <div class="prog-pick" id="progPick">
+          <button class="on" data-rate="3.5">Семейная 3,5%</button>
+          <button data-rate="6">IT 6%</button>
+          <button data-rate="13.9">Базовая 13,9%</button>
+        </div>
+        <div class="field" style="margin-top:22px">
+          <label>Стоимость квартиры <b id="lblPrice">5 200 000 ₽</b></label>
+          <input type="range" id="price" min="3000000" max="12000000" step="100000" value="5200000">
+        </div>
+        <div class="field">
+          <label>Первоначальный взнос <b id="lblDown">20% · 1 040 000 ₽</b></label>
+          <input type="range" id="down" min="15" max="80" step="1" value="20">
+        </div>
+        <div class="field">
+          <label>Срок кредита <b id="lblTerm">25 лет</b></label>
+          <input type="range" id="term" min="5" max="30" step="1" value="25">
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="lab">Ежемесячный платёж</div>
+        <div class="pay" id="monthly">— <span>₽/мес</span></div>
+        <div class="meta" id="calcMeta"></div>
+        <button class="btn btn-tan btn-wide" data-modal>Получить точный расчёт</button>
+      </div>
+    </div>
+
+    <div class="banks rv">
+      <p>Ипотеку одобряют банки-партнёры</p>
+      <div class="banks-row">
+        <span>Сбербанк</span><span>ВТБ</span><span>Россельхозбанк</span><span>ПСБ</span><span>Альфа-Банк</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFRASTRUCTURE ============ -->
+<section class="pad infra" id="infra">
+  <div class="wrap infra-grid">
+    <div>
+      <div class="eyebrow rv">Локация</div>
+      <h2 class="h-sec rv rv-d1">Тверь, ул. Планерная, 8</h2>
+      <p class="about-lead rv rv-d2">Спокойный обжитой район с зеленью и всей городской инфраструктурой под рукой. До центра — около 10 минут, рядом школы, детские сады и транспорт.</p>
+      <div class="poi-grid">
+        <div class="poi rv"><div class="t"><b>10</b> минут</div><p>до центра Твери на авто</p></div>
+        <div class="poi rv rv-d1"><div class="t"><b>5</b> минут</div><p>до школ и детских садов</p></div>
+        <div class="poi rv rv-d2"><div class="t"><b>3</b> минуты</div><p>до магазинов и аптек</p></div>
+        <div class="poi rv rv-d3"><div class="t"><b>2</b> минуты</div><p>до остановок транспорта</p></div>
+      </div>
+    </div>
+    <div class="infra-map rv rv-d1">
+      <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=80" alt="Карта расположения ЖК Крылья" loading="lazy">
+      <div class="infra-pin">
+        <div class="pmark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg></div>
+        <div class="plabel">ЖК «Крылья»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRESS ============ -->
+<section class="pad" id="progress">
+  <div class="wrap">
+    <div class="eyebrow rv">Ход строительства</div>
+    <h2 class="h-sec rv rv-d1">Строим открыто</h2>
+    <div class="timeline">
+      <div class="tl-card rv">
+        <div class="tl-img"><span class="tl-stage">1 очередь</span><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+        <div class="tl-body"><b>Сдана и заселена</b><span>жители уже живут в своих квартирах</span></div>
+      </div>
+      <div class="tl-card rv rv-d1">
+        <div class="tl-img"><span class="tl-stage">2 очередь</span><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+        <div class="tl-body"><b>Монолитные работы</b><span>возведение каркаса секций</span></div>
+      </div>
+      <div class="tl-card rv rv-d2">
+        <div class="tl-img"><span class="tl-stage">2 очередь</span><img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+        <div class="tl-body"><b>Фасад и остекление</b><span>панорамные окна и облицовка</span></div>
+      </div>
+      <div class="tl-card rv rv-d3">
+        <div class="tl-img"><span class="tl-stage">2027</span><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+        <div class="tl-body"><b>Ввод в эксплуатацию</b><span>III квартал 2027 (план)</span></div>
+      </div>
+    </div>
+    <div class="prog-banner rv">
+      <div><b>Фотоотчёт обновляется каждый месяц</b><p>Следите за стройкой в реальном времени в нашем сообществе</p></div>
+      <a href="https://vk.com/wings_tver" target="_blank" rel="noopener" class="btn btn-tan">Смотреть фотоотчёт <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="pad-sm">
+  <div class="wrap">
+    <div class="eyebrow rv">Галерея</div>
+    <h2 class="h-sec rv rv-d1" style="margin-bottom:40px">Как это выглядит</h2>
+    <div class="gallery-grid">
+      <div class="g-item tall rv"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy"></div>
+      <div class="g-item wide rv rv-d1"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy"></div>
+      <div class="g-item rv rv-d2"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+      <div class="g-item rv"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+      <div class="g-item wide rv rv-d1"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="" loading="lazy"></div>
+      <div class="g-item rv rv-d2"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=80" alt="" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEVELOPER ============ -->
+<section class="pad dev">
+  <div class="wrap dev-grid">
+    <div>
+      <div class="eyebrow rv">Застройщик</div>
+      <h2 class="h-sec rv rv-d1">СЗ «Премьер<br>Стройсервис»</h2>
+      <p class="rv rv-d2">Более 11 лет создаём в Твери современные дома, которые становятся символом качественного строительства. Каждый проект — монолитно-кирпичная надёжность, продуманная архитектура и внимание к каждой детали.</p>
+      <p class="rv rv-d2">Первая очередь «Крыльев» уже сдана и заселена — лучшее доказательство того, что мы выполняем обещания в срок.</p>
+    </div>
+    <div class="dev-stats">
+      <div class="dev-stat rv"><b>2013</b><span>год основания компании</span></div>
+      <div class="dev-stat rv rv-d1"><b>11+</b><span>лет на рынке Твери</span></div>
+      <div class="dev-stat rv rv-d2"><b>5</b><span>банков-партнёров по ипотеке</span></div>
+      <div class="dev-stat rv rv-d3"><b>100%</b><span>сданных объектов в срок</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEAD FORM ============ -->
+<section class="pad lead" id="lead">
+  <div class="wrap lead-grid">
+    <div>
+      <div class="eyebrow rv" style="color:var(--navy)"><span style="background:var(--navy)"></span>Личная консультация</div>
+      <h2 class="rv rv-d1">Перезвоним за 15 минут<br>и подберём вашу квартиру</h2>
+      <p class="sub rv rv-d2">Расскажем про наличие, цены, акции и условия ипотеки — без воды и навязывания.</p>
+      <div class="lead-perks rv rv-d3">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Без спама и звонков-роботов</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Подбор под бюджет</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Помощь с ипотекой</div>
+      </div>
+    </div>
+    <div class="form-card rv rv-d1">
+      <form id="leadForm">
+        <h3>Оставить заявку</h3>
+        <p class="fc-sub">Заполните форму — менеджер свяжется с вами</p>
+        <input class="inp" type="text" name="name" placeholder="Ваше имя" required>
+        <input class="inp" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+        <button class="btn btn-dark btn-wide" type="submit">Получить консультацию</button>
+        <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="https://krylia-tver.ru/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a> и обработкой персональных данных.</p>
+      </form>
+      <div class="form-success" id="leadSuccess">
+        <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="30" height="30"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h3>Заявка отправлена!</h3>
+        <p>Мы перезвоним вам в течение 15 минут в рабочее время.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="pad" id="contacts">
+  <div class="wrap">
+    <div class="eyebrow rv">Контакты</div>
+    <h2 class="h-sec rv rv-d1">Приезжайте в гости</h2>
+    <div class="contacts-grid">
+      <div class="contact-card rv">
+        <div class="ct-type">Центральный офис</div>
+        <h3>Отдел продаж</h3>
+        <p class="addr">Тверь, ул. Советская, д. 38, 2 этаж</p>
+        <p class="hours">Пн–Чт: 9:00–18:00<br>Пт: 9:00–17:00<br>Сб–Вс: 10:00–17:00 (по записи)</p>
+      </div>
+      <div class="contact-card rv rv-d1">
+        <div class="ct-type">Строительная площадка</div>
+        <h3>Офис на объекте</h3>
+        <p class="addr">Тверь, ул. Планерная, д. 8</p>
+        <p class="hours">Пн–Вс: 10:00–17:00 (по записи)<br>Встречи и просмотры — по согласованию</p>
+      </div>
+    </div>
+    <div class="contact-phone-row rv">
+      <a href="tel:+74822691112" class="contact-big-phone">+7 4822 69-11-12</a>
+      <div class="socials">
+        <a href="https://vk.com/wings_tver" target="_blank" rel="noopener" aria-label="ВКонтакте"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.2 17.5c-5.5 0-8.9-3.8-9-10.1h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.4h2.6v4c1.6-.2 3.2-2 3.8-4h2.6c-.5 2.5-2.3 4.3-3.5 5 1.2.6 3.3 2.2 4.1 5.1h-2.9c-.6-1.9-2.1-3.4-4.1-3.6v3.6h-.4Z"/></svg></a>
+        <a href="tel:+74822691112" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M4 26 C12 10 20 18 36 8 C28 24 18 22 4 32 Z" fill="#E3C9A4"/><path d="M6 30 C14 18 22 24 34 14" stroke="#283747" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+          Крылья
+        </div>
+        <p class="foot-about">Жилой комплекс на ул. Планерной в Твери. Современные планировки, панорамный свет и архитектура, в которой хочется жить.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Разделы</h4>
+        <a href="#about">О проекте</a>
+        <a href="#apartments">Выбрать квартиру</a>
+        <a href="#purchase">Ипотека</a>
+        <a href="#progress">Ход строительства</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="foot-col">
+        <h4>Квартиры</h4>
+        <a href="https://krylia-tver.ru/all" target="_blank" rel="noopener">Все квартиры</a>
+        <a href="https://krylia-tver.ru/7-8" target="_blank" rel="noopener">1 секция · подъезды 7–8</a>
+        <a href="https://krylia-tver.ru/9-10" target="_blank" rel="noopener">2 секция · подъезды 9–10</a>
+        <a href="https://vk.com/wings_tver" target="_blank" rel="noopener">Сообщество ВКонтакте</a>
+      </div>
+      <div class="foot-col">
+        <h4>Контакты</h4>
+        <a href="tel:+74822691112" style="font-size:20px;font-weight:800;color:#fff">+7 4822 69-11-12</a>
+        <p>Тверь, ул. Советская, 38, 2 этаж</p>
+        <p>Тверь, ул. Планерная, 8</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="disclaimer">Информация на сайте носит исключительно информационный характер и ни при каких условиях не является публичной офертой (ст. 437 ГК РФ). © ООО СЗ «Премьер Стройсервис». Все права защищены.</p>
+      <p><a href="https://krylia-tver.ru/privacy" target="_blank" rel="noopener">Политика конфиденциальности</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- mobile sticky cta -->
+<div class="mobile-cta">
+  <a href="tel:+74822691112" class="btn btn-ghost">Позвонить</a>
+  <button class="btn btn-tan" data-modal>Оставить заявку</button>
+</div>
+
+<!-- modal -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Закрыть окно">&times;</button>
+    <form id="modalForm">
+      <h3>Заказать звонок</h3>
+      <p class="m-sub">Перезвоним в течение 15 минут и ответим на все вопросы</p>
+      <input class="inp" type="text" name="name" placeholder="Ваше имя" required>
+      <input class="inp" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+      <button class="btn btn-dark btn-wide" type="submit">Жду звонка</button>
+      <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="https://krylia-tver.ru/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+    </form>
+    <div class="form-success" id="modalSuccess">
+      <div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="30" height="30"><path d="M5 13l4 4L19 7"/></svg></div>
+      <h3>Готово!</h3>
+      <p>Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- header scroll state ---- */
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40));
+
+/* ---- mobile drawer ---- */
+const drawer=document.getElementById('drawer');
+document.getElementById('burger').onclick=()=>drawer.classList.add('open');
+document.getElementById('drawerClose').onclick=()=>drawer.classList.remove('open');
+drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>drawer.classList.remove('open'));
+
+/* ---- modal ---- */
+const modal=document.getElementById('modal');
+document.querySelectorAll('[data-modal]').forEach(b=>b.onclick=()=>modal.classList.add('open'));
+document.getElementById('modalClose').onclick=()=>modal.classList.remove('open');
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+
+/* ---- forms ---- */
+function handleForm(formId,successId){
+  const f=document.getElementById(formId);
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    f.style.display='none';
+    document.getElementById(successId).classList.add('show');
+  });
+}
+handleForm('leadForm','leadSuccess');
+handleForm('modalForm','modalSuccess');
+
+/* phone mask (light) */
+document.querySelectorAll('input[type=tel]').forEach(inp=>{
+  inp.addEventListener('input',()=>{
+    let v=inp.value.replace(/\D/g,'').slice(0,11);
+    if(v.startsWith('8'))v='7'+v.slice(1);
+    if(!v.startsWith('7'))v='7'+v;
+    let out='+7';
+    if(v.length>1)out+=' ('+v.slice(1,4);
+    if(v.length>=4)out+=') '+v.slice(4,7);
+    if(v.length>=7)out+='-'+v.slice(7,9);
+    if(v.length>=9)out+='-'+v.slice(9,11);
+    inp.value=out;
+  });
+});
+
+/* ---- apartments data + render ---- */
+const apartments=[
+  {sec:'s1',type:'Студия',area:'27,4 м²',price:'4 320 000 ₽',status:'В продаже'},
+  {sec:'s1',type:'1-комнатная',area:'42,5 м²',price:'5 180 000 ₽',status:'В продаже'},
+  {sec:'s1',type:'2-комнатная',area:'58,2 м²',price:'6 640 000 ₽',status:'Хит'},
+  {sec:'s1',type:'Евро-2',area:'46,8 м²',price:'5 540 000 ₽',status:'В продаже'},
+  {sec:'s2',type:'1-комн. с эркером',area:'44,1 м²',price:'5 390 000 ₽',status:'Хит'},
+  {sec:'s2',type:'2-комнатная',area:'61,5 м²',price:'6 980 000 ₽',status:'В продаже'},
+  {sec:'s2',type:'3-комнатная',area:'82,0 м²',price:'7 950 000 ₽',status:'В продаже'},
+  {sec:'s2',type:'Евро-3',area:'68,3 м²',price:'7 210 000 ₽',status:'В продаже'},
+];
+const planSVG=`<svg viewBox="0 0 100 100" fill="none" stroke="#283747" stroke-width="1.4"><rect x="8" y="8" width="84" height="84"/><path d="M8 50h40M48 8v84M48 50h44M70 50v42"/><rect x="14" y="14" width="28" height="30" stroke-width="1" opacity=".5"/><circle cx="60" cy="30" r="6" stroke-width="1" opacity=".5"/></svg>`;
+const grid=document.getElementById('aptGrid');
+function renderApts(sec){
+  const list=sec==='all'?apartments:apartments.filter(a=>a.sec===sec);
+  grid.innerHTML=list.map(a=>`
+    <div class="apt-card">
+      <div class="apt-plan">${planSVG}<span class="apt-tagstatus">${a.status}</span></div>
+      <div class="apt-body">
+        <h3>${a.type}</h3>
+        <div class="apt-meta"><span class="pill on-navy">${a.area}</span></div>
+        <div class="apt-price">стоимость<b>${a.price}</b></div>
+      </div>
+    </div>`).join('');
+  // re-observe new cards
+  grid.querySelectorAll('.apt-card').forEach((c,i)=>{c.style.transition='opacity .5s '+(i*.05)+'s, transform .5s '+(i*.05)+'s';});
+}
+renderApts('all');
+document.querySelectorAll('#sectionTabs .tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('#sectionTabs .tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    renderApts(t.dataset.sec);
+  };
+});
+
+/* ---- mortgage calculator ---- */
+const price=document.getElementById('price'),down=document.getElementById('down'),term=document.getElementById('term');
+let rate=3.5;
+const fmt=n=>Math.round(n).toLocaleString('ru-RU');
+function calc(){
+  const P=+price.value, dPct=+down.value, yrs=+term.value;
+  const loan=P*(1-dPct/100);
+  const r=rate/100/12, n=yrs*12;
+  const m=r===0?loan/n:loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  document.getElementById('lblPrice').textContent=fmt(P)+' ₽';
+  document.getElementById('lblDown').textContent=dPct+'% · '+fmt(P*dPct/100)+' ₽';
+  document.getElementById('lblTerm').textContent=yrs+' '+(yrs%10===1&&yrs!==11?'год':(yrs%10>=2&&yrs%10<=4&&(yrs<12||yrs>14)?'года':'лет'));
+  document.getElementById('monthly').innerHTML=fmt(m)+' <span>₽/мес</span>';
+  document.getElementById('calcMeta').innerHTML='Сумма кредита '+fmt(loan)+' ₽ · ставка '+rate+'% · '+yrs+' лет';
+}
+[price,down,term].forEach(el=>el.addEventListener('input',calc));
+document.querySelectorAll('#progPick button').forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll('#progPick button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); rate=+b.dataset.rate; calc();
+  };
+});
+calc();
+
+/* ---- scroll reveal ---- */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---- gallery lightbox (simple) ---- */
+document.querySelectorAll('.g-item img').forEach(img=>{
+  img.parentElement.onclick=()=>{
+    const o=document.createElement('div');
+    o.style.cssText='position:fixed;inset:0;z-index:90;background:rgba(20,28,36,.92);display:flex;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;animation:popin .3s';
+    o.innerHTML='<img src="'+img.src+'" style="max-width:92%;max-height:92%;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)">';
+    o.onclick=()=>o.remove();
+    document.body.appendChild(o);
+  };
+});
+</script>
+</body>
+</html>
