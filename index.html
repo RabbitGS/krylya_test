@@ -136,7 +136,7 @@ header.scrolled{background:rgba(237,235,231,.92);backdrop-filter:blur(14px);padd
 @keyframes scrolldown{0%{top:-100%}60%,100%{top:100%}}
 
 /* ---------- stat strip ---------- */
-.strip{background:var(--ink);color:#fff;padding:30px 0}
+.strip{background:var(--navy-deep);color:#fff;padding:30px 0}
 .strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .strip-item{display:flex;flex-direction:column;gap:3px}
 .strip-item b{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-.03em;color:var(--tan)}
@@ -192,7 +192,7 @@ header.scrolled{background:rgba(237,235,231,.92);backdrop-filter:blur(14px);padd
 .pay-card .big small{font-size:22px;font-weight:600;opacity:.7;margin-right:6px}
 .pc-taupe{background:var(--taupe);color:#fff}
 .pc-tan{background:var(--tan);color:var(--ink)}
-.pc-ink{background:var(--ink);color:#fff}
+.pc-ink{background:var(--navy-deep);color:#fff}
 .pc-ink .big{color:var(--tan)}
 /* calculator */
 .calc{background:#fff;border-radius:var(--radius-lg);padding:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;box-shadow:0 20px 50px -32px rgba(20,30,40,.4)}
@@ -252,11 +252,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .g-item:hover img{transform:scale(1.06)}
 .g-item.tall{grid-row:span 2}
 .g-item.wide{grid-column:span 2}
-.g-item::after{content:"+";position:absolute;inset:0;background:rgba(26,26,26,.35);color:#fff;font-size:36px;font-weight:400;display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s}
+.g-item::after{content:"";position:absolute;inset:0;background:rgba(26,26,26,.4) url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='44'%20height='44'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23ffffff'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='11'%20cy='11'%20r='7'/%3E%3Cpath%20d='M21%2021l-4.35-4.35'/%3E%3C/svg%3E") center/44px no-repeat;opacity:0;transition:.3s}
 .g-item:hover::after{opacity:1}
 
 /* developer */
-.dev{background:var(--ink);color:#fff}
+.dev{background:var(--navy-deep);color:#fff}
 .dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .dev .eyebrow{color:var(--tan)}
 .dev h2{color:#fff}
@@ -298,7 +298,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .contact-big-phone{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em}
 .socials{display:flex;gap:12px}
 .socials a{width:50px;height:50px;border:1.5px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;transition:.3s}
-.socials a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.socials a:hover{background:var(--navy-deep);color:#fff;border-color:var(--navy-deep)}
 .socials svg{width:22px;height:22px}
 
 /* footer */
@@ -614,7 +614,7 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
       </div>
     </div>
     <div class="infra-map rv rv-d1">
-      <iframe src="https://yandex.ru/map-widget/v1/?z=16&text=%D0%A2%D0%B2%D0%B5%D1%80%D1%8C%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9F%D0%BB%D0%B0%D0%BD%D0%B5%D1%80%D0%BD%D0%B0%D1%8F%2C%208" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen="true" loading="lazy" title="ЖК «Крылья» на карте — Тверь, улица Планерная, 8"></iframe>
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=35.846366%2C56.888500&z=17&mode=search&oid=168379878520" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen="true" loading="lazy" title="ЖК «Крылья» на карте — Тверь, улица Планерная, 8"></iframe>
     </div>
   </div>
 </section>
