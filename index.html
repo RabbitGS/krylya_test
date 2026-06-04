@@ -868,7 +868,7 @@ modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
 
 /* ---- forms → amoCRM + страница «Спасибо» (цель Метрики по URL) ---- */
 // TODO: после настройки интеграции amoCRM вставить сюда URL Netlify-функции
-const LEAD_ENDPOINT='';
+const LEAD_ENDPOINT='/.netlify/functions/lead';
 async function sendLead(data){
   if(!LEAD_ENDPOINT) return true; // endpoint ещё не настроен — демо-режим (заявка не уходит)
   try{
