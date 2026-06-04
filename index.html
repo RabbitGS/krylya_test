@@ -179,6 +179,7 @@ header:not(.scrolled) .nav-links a::after{background:#fff}
 .apt-card:hover{background:rgba(255,255,255,.1);transform:translateY(-6px)}
 .apt-plan{aspect-ratio:1;background:#f4f2ee;position:relative;display:flex;align-items:center;justify-content:center}
 .apt-plan svg{width:78%;height:78%;opacity:.85}
+.apt-plan img{width:100%;height:100%;object-fit:contain;padding:12px}
 .apt-tagstatus{position:absolute;top:12px;left:12px;background:var(--tan);color:var(--ink);font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px}
 .apt-body{padding:20px}
 .apt-body h3{font-size:19px;margin-bottom:12px}
@@ -333,7 +334,17 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
 @keyframes popin{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
 .modal-box h3{font-size:24px;margin-bottom:6px}
 .modal-box .m-sub{color:var(--muted);font-size:14px;margin-bottom:24px}
-.modal-close{position:absolute;top:18px;right:18px;font-size:28px;color:var(--muted);line-height:1}
+.modal-close{position:absolute;top:18px;right:18px;font-size:28px;color:var(--muted);line-height:1;z-index:3}
+.apt-modal-box{background:#fff;border-radius:var(--radius-lg);max-width:900px;width:100%;position:relative;animation:popin .4s var(--ease);overflow:hidden;max-height:94vh}
+.apt-modal-grid{display:grid;grid-template-columns:1.15fr 1fr}
+.apt-modal-plan{background:#f4f2ee;display:flex;align-items:center;justify-content:center;padding:26px;min-height:380px}
+.apt-modal-plan img{max-width:100%;max-height:78vh;object-fit:contain}
+.apt-modal-side{padding:40px 38px;display:flex;flex-direction:column;overflow-y:auto}
+.apt-modal-status{position:static;align-self:flex-start;margin-bottom:6px}
+.apt-modal-side h3{font-size:26px;margin:8px 0}
+.apt-modal-meta{display:flex;align-items:baseline;gap:14px}
+.apt-modal-meta span{font-size:16px;font-weight:600;color:var(--navy)}
+.apt-modal-meta b{font-size:24px;color:var(--ink);font-weight:800;letter-spacing:-.02em}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -360,6 +371,9 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
   .pad{padding:72px 0}.pad-sm{padding:54px 0}
   .foot-top{grid-template-columns:1fr 1fr;gap:32px}
   .apt-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .apt-modal-grid{grid-template-columns:1fr}
+  .apt-modal-plan{min-height:220px;padding:16px}
+  .apt-modal-side{padding:26px 22px}
   .timeline{grid-template-columns:1fr 1fr}
   .gallery-grid{grid-template-columns:1fr 1fr}
   .g-item.wide{grid-column:span 2}
@@ -523,8 +537,6 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
     <h2 class="h-sec rv rv-d1">Планировки под<br>ваш сценарий жизни</h2>
     <div class="tabs rv rv-d2" id="sectionTabs">
       <button class="tab active" data-sec="all">Все квартиры</button>
-      <button class="tab" data-sec="s1">Секции 7–8</button>
-      <button class="tab" data-sec="s2">Секции 9–10</button>
     </div>
     <div class="apt-grid" id="aptGrid"></div>
     <div class="apts-footer rv">
@@ -815,6 +827,28 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
   </div>
 </div>
 
+<!-- modal: планировка квартиры + форма заявки -->
+<div class="modal" id="aptModal">
+  <div class="apt-modal-box">
+    <button class="modal-close" id="aptModalClose" aria-label="Закрыть окно">&times;</button>
+    <div class="apt-modal-grid">
+      <div class="apt-modal-plan"><img id="aptModalImg" src="" alt="Планировка квартиры"></div>
+      <div class="apt-modal-side">
+        <span class="apt-tagstatus apt-modal-status" id="aptModalStatus">В продаже</span>
+        <h3 id="aptModalTitle">Квартира</h3>
+        <div class="apt-modal-meta"><span id="aptModalArea">—</span><b id="aptModalPrice">—</b></div>
+        <p class="fc-sub" style="margin:18px 0 0">Оставьте заявку — менеджер расскажет о квартире, актуальной цене и условиях ипотеки.</p>
+        <form id="aptForm">
+          <input class="inp" type="text" name="name" placeholder="Ваше имя" required style="margin-top:18px">
+          <input class="inp" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          <button class="btn btn-dark btn-wide" type="submit">Оставить заявку</button>
+          <p class="consent">Нажимая кнопку, вы соглашаетесь с <a href="https://krylia-tver.ru/privacy" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ---- header scroll state ---- */
 const hdr=document.getElementById('hdr');
@@ -851,6 +885,7 @@ function handleForm(formId){
       name:f.querySelector('[name=name]').value.trim(),
       phone:f.querySelector('[name=phone]').value.trim(),
       form:formId,
+      apt:f.dataset.apt||'',
       page:location.href
     };
     if(btn){btn.disabled=true;btn.textContent='Отправляем…';}
@@ -860,6 +895,7 @@ function handleForm(formId){
 }
 handleForm('leadForm');
 handleForm('modalForm');
+handleForm('aptForm');
 
 /* phone mask (light) */
 document.querySelectorAll('input[type=tel]').forEach(inp=>{
@@ -878,39 +914,45 @@ document.querySelectorAll('input[type=tel]').forEach(inp=>{
 
 /* ---- apartments data + render ---- */
 const apartments=[
-  {sec:'s1',type:'Студия',area:'27,4 м²',price:'4 320 000 ₽',status:'В продаже'},
-  {sec:'s1',type:'1-комнатная',area:'42,5 м²',price:'5 180 000 ₽',status:'В продаже'},
-  {sec:'s1',type:'2-комнатная',area:'58,2 м²',price:'6 640 000 ₽',status:'Хит'},
-  {sec:'s1',type:'Евро-2',area:'46,8 м²',price:'5 540 000 ₽',status:'В продаже'},
-  {sec:'s2',type:'1-комн. с эркером',area:'44,1 м²',price:'5 390 000 ₽',status:'Хит'},
-  {sec:'s2',type:'2-комнатная',area:'61,5 м²',price:'6 980 000 ₽',status:'В продаже'},
-  {sec:'s2',type:'3-комнатная',area:'82,0 м²',price:'7 950 000 ₽',status:'В продаже'},
-  {sec:'s2',type:'Евро-3',area:'68,3 м²',price:'7 210 000 ₽',status:'В продаже'},
+  {type:'1-комнатная',area:'44,3 м²',price:'5 100 000 ₽',status:'В продаже',img:'images/plans/p_1k_443.jpg'},
+  {type:'1-комнатная',area:'45,3 м²',price:'5 210 000 ₽',status:'Хит',img:'images/plans/p_1k_453.jpg'},
+  {type:'2-комнатная',area:'64,8 м²',price:'7 130 000 ₽',status:'В продаже',img:'images/plans/p_2k_648.jpg'},
+  {type:'2-комнатная',area:'72,5 м²',price:'7 980 000 ₽',status:'В продаже',img:'images/plans/p_2k_725.jpg'},
+  {type:'3-комнатная',area:'90,0 м²',price:'9 450 000 ₽',status:'В продаже',img:'images/plans/p_3k_90.jpg'},
+  {type:'3-комнатная',area:'91,8 м²',price:'9 640 000 ₽',status:'В продаже',img:'images/plans/p_3k_918.jpg'},
 ];
-const planSVG=`<svg viewBox="0 0 100 100" fill="none" stroke="#283747" stroke-width="1.4"><rect x="8" y="8" width="84" height="84"/><path d="M8 50h40M48 8v84M48 50h44M70 50v42"/><rect x="14" y="14" width="28" height="30" stroke-width="1" opacity=".5"/><circle cx="60" cy="30" r="6" stroke-width="1" opacity=".5"/></svg>`;
 const grid=document.getElementById('aptGrid');
-function renderApts(sec){
-  const list=sec==='all'?apartments:apartments.filter(a=>a.sec===sec);
-  grid.innerHTML=list.map(a=>`
-    <div class="apt-card">
-      <div class="apt-plan">${planSVG}<span class="apt-tagstatus">${a.status}</span></div>
+function renderApts(){
+  grid.innerHTML=apartments.map((a,i)=>`
+    <div class="apt-card" data-i="${i}">
+      <div class="apt-plan"><img src="${a.img}" alt="Планировка ${a.type} ${a.area}" loading="lazy"><span class="apt-tagstatus">${a.status}</span></div>
       <div class="apt-body">
         <h3>${a.type}</h3>
         <div class="apt-meta"><span class="pill on-navy">${a.area}</span></div>
         <div class="apt-price">стоимость<b>${a.price}</b></div>
       </div>
     </div>`).join('');
-  // re-observe new cards
-  grid.querySelectorAll('.apt-card').forEach((c,i)=>{c.style.transition='opacity .5s '+(i*.05)+'s, transform .5s '+(i*.05)+'s';});
+  grid.querySelectorAll('.apt-card').forEach((c,i)=>{
+    c.style.transition='opacity .5s '+(i*.05)+'s, transform .5s '+(i*.05)+'s';
+    c.addEventListener('click',()=>openApt(apartments[+c.dataset.i]));
+  });
 }
-renderApts('all');
-document.querySelectorAll('#sectionTabs .tab').forEach(t=>{
-  t.onclick=()=>{
-    document.querySelectorAll('#sectionTabs .tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    renderApts(t.dataset.sec);
-  };
-});
+renderApts();
+
+/* ---- модалка квартиры: планировка + форма ---- */
+const aptModal=document.getElementById('aptModal');
+function openApt(a){
+  const img=document.getElementById('aptModalImg');
+  img.src=a.img; img.alt='Планировка '+a.type+' '+a.area;
+  document.getElementById('aptModalTitle').textContent=a.type;
+  document.getElementById('aptModalArea').textContent=a.area;
+  document.getElementById('aptModalPrice').textContent=a.price;
+  document.getElementById('aptModalStatus').textContent=a.status;
+  document.getElementById('aptForm').dataset.apt=a.type+', '+a.area+', '+a.price;
+  aptModal.classList.add('open');
+}
+document.getElementById('aptModalClose').onclick=()=>aptModal.classList.remove('open');
+aptModal.onclick=e=>{if(e.target===aptModal)aptModal.classList.remove('open')};
 
 /* ---- mortgage calculator ---- */
 const price=document.getElementById('price'),down=document.getElementById('down'),term=document.getElementById('term');
