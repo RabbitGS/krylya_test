@@ -95,7 +95,13 @@ header{
   transition:background .4s var(--ease),box-shadow .4s,padding .4s;
   padding:22px 0;
 }
-header.scrolled{background:rgba(237,235,231,.92);backdrop-filter:blur(14px);padding:13px 0;box-shadow:0 1px 0 var(--line)}
+header.scrolled{background:rgba(237,235,231,.62);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);padding:13px 0;box-shadow:0 1px 0 var(--line)}
+/* верх страницы (шапка поверх фото героя): прозрачно + светлый текст */
+header:not(.scrolled){color:#fff}
+header:not(.scrolled) .logo,header:not(.scrolled) .nav-links a,header:not(.scrolled) .nav-phone{color:#fff}
+header:not(.scrolled) .logo .sub{color:rgba(255,255,255,.85)}
+header:not(.scrolled) .logo svg path[fill="#283747"]{fill:#fff}
+header:not(.scrolled) .nav-links a::after{background:#fff}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:28px}
 .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:23px;letter-spacing:-.03em}
 .logo svg{width:34px;height:34px}
@@ -615,6 +621,10 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
     </div>
     <div class="infra-map rv rv-d1">
       <iframe src="https://yandex.ru/map-widget/v1/?ll=35.846366%2C56.888500&z=17&mode=search&oid=168379878520" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen="true" loading="lazy" title="ЖК «Крылья» на карте — Тверь, улица Планерная, 8"></iframe>
+      <div class="infra-pin" style="pointer-events:none">
+        <div class="pmark" style="background:#E0322E;box-shadow:0 8px 22px rgba(224,50,46,.5)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M3 21V8l5-3 5 3v2h8v11h-8v-4h-2v4H3Zm3-3h2v-2H6v2Zm0-4h2v-2H6v2Zm0-4h2V8H6v2Zm5 8h2v-2h-2v2Zm0-4h2v-2h-2v2Zm0-4h2V8h-2v2Zm5 8h2v-2h-2v2Zm0-4h2v-2h-2v2Z"/></svg></div>
+        <div class="plabel">ЖК «Крылья»</div>
+      </div>
     </div>
   </div>
 </section>
