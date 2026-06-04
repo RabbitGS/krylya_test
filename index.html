@@ -225,8 +225,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
 /* infrastructure */
 .infra{background:var(--bg-soft)}
-.infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.infra-map{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:1.15;background:linear-gradient(135deg,#d4cdc2,#b3a795);position:relative;box-shadow:var(--shadow)}
+.infra-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch}
+.infra-map{border-radius:var(--radius-lg);overflow:hidden;height:100%;min-height:480px;background:linear-gradient(135deg,#d4cdc2,#b3a795);position:relative;box-shadow:var(--shadow)}
 .infra-map img{width:100%;height:100%;object-fit:cover}
 .infra-pin{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);z-index:2}
 .infra-pin .pmark{width:54px;height:54px;background:var(--tan);border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.3)}
@@ -345,6 +345,7 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
   .nav-links,.nav-phone{display:none}
   .burger{display:flex}
   .about-grid,.infra-grid,.dev-grid,.lead-grid,.calc{grid-template-columns:1fr;gap:40px}
+  .infra-map{height:auto;min-height:0;aspect-ratio:1.15}
   .apt-grid,.timeline,.gallery-grid{grid-template-columns:repeat(2,1fr)}
   .pay-grid{grid-template-columns:1fr 1fr}
   .strip-grid{grid-template-columns:repeat(2,1fr);gap:26px 20px}
