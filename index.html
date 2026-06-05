@@ -11,11 +11,17 @@
 <meta name="apple-mobile-web-app-title" content="Крылья">
 <title>ЖК «Крылья» — современный жилой комплекс на Планерной в Твери</title>
 <meta name="description" content="ЖК «Крылья» в Твери на ул. Планерная: умные планировки, панорамное остекление, эркеры, автономное отопление, монолит-кирпич, паркинг. Квартиры от 4,3 млн ₽. Семейная ипотека от 3,5%, Trade-In, рассрочка.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/hero.webp" fetchpriority="high">
 <style>
+/* Manrope — локально (без Google Fonts: fonts.googleapis.com недоступен в РФ → блокировал отрисовку) */
+@font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url('fonts/manrope-cyrillic-400.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:400;font-display:swap;src:url('fonts/manrope-latin-400.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url('fonts/manrope-cyrillic-600.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:600;font-display:swap;src:url('fonts/manrope-latin-600.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-weight:700;font-display:swap;src:url('fonts/manrope-cyrillic-700.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:700;font-display:swap;src:url('fonts/manrope-latin-700.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Manrope';font-weight:800;font-display:swap;src:url('fonts/manrope-cyrillic-800.woff2') format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Manrope';font-weight:800;font-display:swap;src:url('fonts/manrope-latin-800.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
   --bg:#EDEBE7;
   --bg-soft:#F5F3EF;
@@ -461,7 +467,7 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <img class="hero-bg-img" src="images/hero.jpg" alt="ЖК «Крылья» — двор с детской площадкой" fetchpriority="high" decoding="async">
+  <picture><source srcset="images/hero.webp" type="image/webp"><img class="hero-bg-img" src="images/hero.jpg" alt="ЖК «Крылья» — двор с детской площадкой" fetchpriority="high" decoding="async"></picture>
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-top">
     <div class="wrap">
@@ -674,11 +680,11 @@ footer{background:var(--navy-deep);color:#fff;padding:70px 0 34px}
     <div class="eyebrow rv">Галерея</div>
     <h2 class="h-sec rv rv-d1" style="margin-bottom:40px">Как это выглядит</h2>
     <div class="gallery-grid">
-      <div class="g-item tall rv"><img src="images/gallery/g4.jpg" alt="ЖК «Крылья» — фасады и двор с детской площадкой" loading="lazy"></div>
-      <div class="g-item wide rv rv-d1"><img src="images/gallery/g7.jpg" alt="ЖК «Крылья» — вид сверху на комплекс и двор" loading="lazy"></div>
-      <div class="g-item rv rv-d2"><img src="images/gallery/g3.jpg" alt="ЖК «Крылья» — вечерний вид комплекса" loading="lazy"></div>
-      <div class="g-item rv"><img src="images/gallery/g5.jpg" alt="ЖК «Крылья» — благоустроенный двор" loading="lazy"></div>
-      <div class="g-item wide rv rv-d1"><img src="images/gallery/g1.jpg" alt="ЖК «Крылья» — фасады на закате" loading="lazy"></div>
+      <div class="g-item tall rv"><picture><source srcset="images/gallery/g4.webp" type="image/webp"><img src="images/gallery/g4.jpg" alt="ЖК «Крылья» — фасады и двор с детской площадкой" loading="lazy"></picture></div>
+      <div class="g-item wide rv rv-d1"><picture><source srcset="images/gallery/g7.webp" type="image/webp"><img src="images/gallery/g7.jpg" alt="ЖК «Крылья» — вид сверху на комплекс и двор" loading="lazy"></picture></div>
+      <div class="g-item rv rv-d2"><picture><source srcset="images/gallery/g3.webp" type="image/webp"><img src="images/gallery/g3.jpg" alt="ЖК «Крылья» — вечерний вид комплекса" loading="lazy"></picture></div>
+      <div class="g-item rv"><picture><source srcset="images/gallery/g5.webp" type="image/webp"><img src="images/gallery/g5.jpg" alt="ЖК «Крылья» — благоустроенный двор" loading="lazy"></picture></div>
+      <div class="g-item wide rv rv-d1"><picture><source srcset="images/gallery/g1.webp" type="image/webp"><img src="images/gallery/g1.jpg" alt="ЖК «Крылья» — фасады на закате" loading="lazy"></picture></div>
     </div>
   </div>
 </section>
